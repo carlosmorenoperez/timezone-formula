@@ -2,5 +2,5 @@
 # vim: ft=yaml
 ---
 timezone:
-  name: 'Europe/Berlin'
+  name: 'Europe/Madrid'
   utc: true

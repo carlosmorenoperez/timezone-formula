@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{#- Get the `tplroot` from `tpldir` #}
-{%- set tplroot = tpldir.split('/')[0] %}
-{%- from tplroot ~ "/map.jinja" import timezone with context %}
+#{#- Get the `tplroot` from `tpldir` #}
+#{%- set tplroot = tpldir.split('/')[0] %}
+#{%- from tplroot ~ "/map.jinja" import timezone with context %}
+{%- set timezone = salt['pillar.get']('timezone:lookup:name', 'Europe/Madrid') %}
+{%- set utc = salt['pillar.get']('timezone:lookup:utc', True) %}
+{% from "timezone/map.jinja" import confmap with context %}
 
 {%- if grains.os not in ('MacOS', 'Windows') %}
 timezone_packages:
